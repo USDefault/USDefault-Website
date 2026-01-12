@@ -208,8 +208,10 @@ body{
   flex-wrap:wrap;
 }
 
+/* Kachel-Breite angepasst, damit drei Kacheln nebeneinander in der Desktop-Ansicht passen.
+   Styling (Abstände, Schriftgrößen, Farben) bleibt unverändert. */
 .card{
-  width:360px;
+  width:280px;
   background:rgba(255,255,255,0.02);
   border:1px solid rgba(255,255,255,0.04);
   border-radius:10px;
