@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>USDwon</title>
+
+  <!-- Fonts: IBM Plex Sans + IBM Plex Mono -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+
+    <section class="hero">
+      <h1>Winning by default.</h1>
+      <h2>America priced in.</h2>
+      <h3 class="live">Live.</h3>
+
+    </section>
+
+<img src="flare.png" alt="" class="flare" aria-hidden="true">
+
+    <section class="access section-flare">
+      <div class="label">Access</div>
+      <div class="usdwon">$USDefault</div>
+      <div class="wallet" role="button" tabindex="0" title="Kopieren" data-wallet="0x1234…5678">0x1234…5678</div>
+      <div class="momentum">Capital positioning · early phase</div>
+      <div class="copied-hint">Copied</div>
+      <div class="helper">Verify before interacting.</div>
+    </section>
+
+    <section class="receipts section-flare">
+      <h4>Receipts.</h4>
+
+      <div class="cards">
+        <article class="card">
+          <div class="source">Reuters</div>
+          <h5>USD Surges Amid Global Volatility</h5>
+          <p>Markets leaned into U.S. strength as volatility in other regions reduced demand for riskier assets.</p>
+        </article>
+
+        <article class="card">
+          <div class="source">Bloomberg</div>
+          <h5>Markets Bet on American Strength</h5>
+          <p>Investors repositioned portfolios towards dollar-denominated assets amid shifting global sentiment.</p>
+        </article>
+      </div>
+    </section>
+
+<footer class="footer-x">
+  <a href="https://x.com/TheUSDefault"
+     target="_blank"
+     rel="noopener noreferrer"
+     aria-label="X Profil">
+    <img src="x.png" alt="" class="x-icon" aria-hidden="true">
+  </a>
+</footer>
+
+
+  </div>
+
+  <script>
+  // Reveal-on-scroll (IntersectionObserver)
+  (function(){
+    const cards = document.querySelectorAll('.card');
+    if(cards.length){
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if(e.isIntersecting){
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold:0.15 });
+
+      cards.forEach(c => io.observe(c));
+    }
+  })();
+
+  // Wallet copy interaction (accessible) - robust, uses element-relative hint
+  (function(){
+    const wallet = document.querySelector('.wallet');
+    if(!wallet) return;
+
+    // Das Hint-Element steht direkt nach der Wallet im DOM
+    const access = document.querySelector('.access');
+const hint = access.querySelector('.copied-hint');
+
+
+    function showFeedback(){
+      wallet.setAttribute('aria-label','Kopiert');
+      wallet.classList.add('copied');
+      if(hint) hint.classList.add('is-visible');
+
+      setTimeout(()=>{
+        wallet.classList.remove('copied');
+        if(hint) hint.classList.remove('is-visible');
+      },1600);
+    }
+
+    function copyWallet(){
+      const text = wallet.dataset.wallet || wallet.textContent.trim();
+
+      if(navigator.clipboard && window.isSecureContext){
+        navigator.clipboard.writeText(text).then(showFeedback).catch(showFeedback);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch(e){}
+        ta.remove();
+        showFeedback();
+      }
+    }
+
+    wallet.addEventListener('click', copyWallet);
+    wallet.addEventListener('keypress', (e)=>{
+      if(e.key === 'Enter' || e.key === ' ') copyWallet();
+    });
+  })();
+
+  // Live appear animation - zeigt "Live." nach Page load
+  window.addEventListener('load', () => {
+    const live = document.querySelector('.hero .live');
+    if(!live) return;
+    setTimeout(() => live.classList.add('is-visible'), 900);
+  });
+  </script>
+
+</body>
+</html>
