@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 
   <!-- Main stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="page">
@@ -21,7 +21,7 @@
 
     </section>
 
-<img src="images/flare.png" alt="" class="flare" aria-hidden="true">
+    <img src="flare.png" alt="" class="flare" aria-hidden="true">
 
     <section class="access section-flare">
       <div class="label">Access</div>
@@ -38,14 +38,20 @@
       <div class="cards">
         <article class="card">
           <div class="source">Reuters</div>
-          <h5>USD Surges Amid Global Volatility</h5>
-          <p>Markets leaned into U.S. strength as volatility in other regions reduced demand for riskier assets.</p>
+          <h5>Dollar Holds Ground as Global Markets Reprice Risk</h5>
+          <p>Capital rotated toward U.S. assets as uncertainty elsewhere reinforced the dollar’s role as the primary reference point.</p>
         </article>
 
         <article class="card">
           <div class="source">Bloomberg</div>
-          <h5>Markets Bet on American Strength</h5>
-          <p>Investors repositioned portfolios towards dollar-denominated assets amid shifting global sentiment.</p>
+          <h5>Global Investors Reaffirm Confidence in U.S. Assets</h5>
+          <p>Portfolio flows favored dollar-denominated instruments as markets adjusted to shifting geopolitical and macro conditions.</p>
+        </article>
+
+        <article class="card">
+          <div class="source">Reuters</div>
+          <h5>U.S. Assets Attract Inflows as Volatility Tests Global Markets</h5>
+          <p>Periods of stress once again highlighted the United States as the system’s preferred destination for capital.</p>
         </article>
       </div>
     </section>
@@ -55,7 +61,7 @@
      target="_blank"
      rel="noopener noreferrer"
      aria-label="X Profil">
-    <img src="images/x.png" alt="" class="x-icon" aria-hidden="true">
+    <img src="x.png" alt="" class="x-icon" aria-hidden="true">
   </a>
 </footer>
 
@@ -87,7 +93,7 @@
 
     // Das Hint-Element steht direkt nach der Wallet im DOM
     const access = document.querySelector('.access');
-const hint = access.querySelector('.copied-hint');
+    const hint = access.querySelector('.copied-hint');
 
 
     function showFeedback(){
