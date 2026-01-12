@@ -1,0 +1,364 @@
+:root{
+  --bg:#040204;
+  --white:#ededed;
+  --muted:#b5b5b5;
+  --dim:#8f8f8f;
+  --accent:#f3c86b;
+  --max-width:920px;
+}
+
+/* Basic reset */
+*{ box-sizing:border-box }
+
+html, body {
+  overflow-x: hidden;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  font-family: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial;
+  color:var(--white);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  line-height:1.55;
+}
+
+/* Page container */
+.page{
+  width:100%;
+  max-width:var(--max-width);
+  padding:64px 28px 96px;
+  text-align:center;
+  margin:0 auto;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  padding-bottom:120px;
+  padding-top:8px;
+}
+
+.hero h1,
+.hero h2,
+.hero h3{
+  position:relative;
+  z-index:3;
+  margin:0;
+}
+
+.hero h1{
+  font-size:clamp(46px, 5vw, 60px);
+  font-weight:500;
+  margin-bottom:12px;
+  letter-spacing:-0.01em;
+}
+
+.hero h2{
+  font-size:22px;
+  font-weight:400;
+  color:var(--muted);
+  margin-bottom:2px;
+}
+
+.hero h3{
+  font-size:18px;
+  font-weight:400;
+  color:var(--dim);
+}
+
+/* Live initial state + visible */
+.hero .live{
+  opacity:0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.9s ease,
+    transform 0.9s ease;
+}
+
+.hero .live.is-visible{
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* ================= FLARE IMAGE (statt CSS-Gradient) ================= */
+
+.flare{
+  position: relative;
+  display:block;
+  margin: -140px auto -80px;
+  width:98%;
+  max-width:1000px;
+  pointer-events:none;
+  z-index:-1;
+  opacity:0.98;
+}
+
+/* ================= TAGLINE ================= */
+
+/* erhöht für bessere Lesbarkeit */
+.tagline{
+  margin-top:-44px;
+  font-size:15px; /* erhöht von 13px */
+  color:#a5a5a5;
+  letter-spacing:0.01em;
+}
+
+/* ================= ACCESS ================= */
+
+.access{
+  margin-top:93px;
+  position:relative;
+  z-index:1;
+}
+
+.access .label{
+  font-size:13px; /* erhöht von 11px */
+  color:#b3b3b3;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+
+.access .usdwon{
+  font-size:32px;
+  font-weight:500;
+  margin-bottom:10px;
+}
+
+/* Wallet styling (mono) */
+.wallet{
+  display:inline-block;
+  font-family:"IBM Plex Mono", monospace;
+  font-size:13px;
+  padding:9px 22px;
+  border-radius:8px;
+
+  border:1px solid rgba(243,200,107,0.28);
+  background: rgba(255,255,255,0.035);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+
+  margin-bottom:8px;
+  cursor:pointer;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+/* Hover / focus for desktop */
+@media (hover: hover){
+  .wallet:hover,
+  .wallet:focus-visible{
+    transform: scale(1.06);
+    box-shadow: 0 6px 24px rgba(243,200,107,0.18);
+  }
+}
+
+/* Copied state (action feedback for both desktop & mobile) */
+.wallet.copied{
+  transform: scale(1.06);
+  box-shadow: 0 6px 24px rgba(243,200,107,0.18);
+}
+
+/* Helper text - erhöht für Lesbarkeit */
+.access .helper{
+  font-size:14px; /* erhöht von 12px */
+  color:#7f7f7f;
+}
+
+/* ================= COPIED HINT ================= */
+
+/* etwas größer für bessere Sichtbarkeit */
+.copied-hint{
+  font-size:12px; /* erhöht von 11px */
+  margin-top:6px;
+  color:rgba(243,200,107,0.8);
+  opacity:0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  transform: translateY(4px);
+}
+
+.copied-hint.is-visible{
+  opacity:1;
+  transform: translateY(0);
+}
+
+/* ================= RECEIPTS ================= */
+
+.receipts{
+  margin-top:56px;
+  position:relative;
+  z-index:1;
+}
+
+.receipts h4{
+  font-size:16px;
+  font-weight:500;
+  color:#cfcfcf;
+  margin-bottom:24px;
+}
+
+.cards{
+  display:flex;
+  gap:20px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.card{
+  width:360px;
+  background:rgba(255,255,255,0.02);
+  border:1px solid rgba(255,255,255,0.04);
+  border-radius:10px;
+  padding:16px;
+  text-align:left;
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity 0.8s ease, transform 0.8s ease;
+  box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+.card.visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.source{
+  font-size:13px; /* erhöht von 11px */
+  color:rgba(243,200,107,0.8);
+  margin-bottom:8px;
+  font-weight:600;
+}
+
+.card h5{
+  font-size:17px;
+  margin:0 0 10px;
+  font-weight:600;
+}
+
+.card p{
+  font-size:15px; /* erhöht von 14px */
+  color:#d5d5d5;
+  margin:0;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+  margin-top:72px;
+  font-size:13px; /* erhöht von 12px */
+  color:#9c9c9c;
+}
+
+footer a{
+  color:#9c9c9c;
+  text-decoration:none;
+}
+
+/* ================= GOLDENE TRENNLINIEN (isoliert, kein Layout-Shift) ================= */
+
+.section-flare{
+  position: relative;
+}
+
+.section-flare::before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:-18px;                 /* sitzt ÜBER der Section, wirkt als Trennlinie */
+  transform:translateX(-50%);
+  width:100%;
+  max-width:640px;
+  height:2px;
+  pointer-events:none;
+  z-index:0;
+
+  background:linear-gradient(
+    90deg,
+    rgba(243,200,107,0) 0%,
+    rgba(243,200,107,0.45) 30%,
+    rgba(255,245,215,0.85) 50%,
+    rgba(243,200,107,0.45) 70%,
+    rgba(243,200,107,0) 100%
+  );
+
+  filter: blur(0.6px);
+  opacity:0.75;
+}
+
+/* Per-section tuning */
+.tagline.section-flare::before{ max-width:520px; opacity:0.6; }
+.access.section-flare::before { max-width:620px; opacity:0.9; }
+.receipts.section-flare::before{ max-width:680px; opacity:0.75; }
+
+/* ================= MOBILE ================= */
+
+@media (max-width:520px){
+  .flare{
+    width: 100vw;
+    max-width: none;
+
+    margin-left: 50%;
+    transform: translateX(-50%);
+
+    margin-top: -140px;
+    margin-bottom: -80px;
+  }
+}
+
+ .hero h1 {
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.05;
+  white-space: nowrap;
+}
+  .cards{ gap:14px; }
+
+  .card{ width:100%; max-width:420px; }
+
+  .section-flare::before{
+    max-width:90%;
+    height:1.5px;
+    top:-14px;
+    filter: blur(0.4px);
+    opacity:0.6;
+  }
+
+  /* Mobile: slightly increase body text for readability */
+  body{ font-size:15px; }
+}
+
+.momentum{
+  margin-top:6px;
+  font-size:13px;
+  color:rgba(243,200,107,0.55);
+  letter-spacing:0.01em;
+}
+
+/* ================= FOOTER X ICON ================= */
+
+.footer-x{
+  margin-top:72px;
+  display:flex;
+  justify-content:center;
+}
+
+.x-icon{
+  width:54px;
+  height:auto;
+  opacity:0.65;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    filter 0.25s ease;
+}
+
+/* Hover / Focus */
+.footer-x a:hover .x-icon,
+.footer-x a:focus-visible .x-icon{
+  opacity:0.95;
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 6px rgba(243,200,107,0.35));
+}
