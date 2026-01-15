@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>USDefault</title>
 
-  <!-- Fonts: IBM Plex Sans + IBM Plex Mono -->
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="style.css">
@@ -14,57 +14,132 @@
 <body>
   <div class="page">
 
-    <section class="hero">
-      <h1>America priced in.</h1>
-      <h2>Superior by default.</h2>
-      <h3 class="live">Live.</h3>
+    <!-- HERO -->
+    <section class="hero" role="banner" aria-label="Hero">
+      <div class="hero-inner">
+        <h1>America priced in.</h1>
 
+        <p class="hero-sub">
+          The dollar remains the global reference point when risk is repriced—because liquidity, depth, and settlement scale are non-negotiable.
+        </p>
+
+        <div class="hero-meta" aria-label="Status and tagline">
+          <span class="hero-tagline">Superior by default.</span>
+
+          <span class="status" role="status" aria-live="polite">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span class="status-text">Live</span>
+          </span>
+        </div>
+
+        <!-- QUICK PATH (Above-the-fold contract copy) -->
+        <div class="hero-quick" aria-label="Quick access">
+          <span class="hq-k">Contract</span>
+          <button
+            class="copy-chip mono"
+            type="button"
+            data-copy="0x1234…5678"
+            aria-label="Copy contract address"
+            title="Copy"
+          >
+            0x1234…5678
+          </button>
+          <span class="hq-note">Verify independently</span>
+        </div>
+
+        <div class="hero-copied" aria-hidden="true">Copied</div>
+      </div>
     </section>
 
-    <img src="flare.png" alt="" class="flare" aria-hidden="true">
+    <!-- EVIDENCE -->
+    <section class="receipts section-flare" aria-labelledby="receipts-label">
+      <div class="section-head">
+        <h2 id="receipts-label">Evidence</h2>
+        <p class="section-note">
+          Selected headlines that reflect recurring market behavior. Always verify primary sources.
+        </p>
+      </div>
 
-    <section class="access section-flare">
-      <div class="label">Access</div>
-      <div class="usdwon">$USDefault</div>
-      <div class="wallet" role="button" tabindex="0" title="Kopieren" data-wallet="0x1234…5678">0x1234…5678</div>
-      <div class="momentum">Capital positioning · early phase</div>
-      <div class="copied-hint">Copied</div>
-      <div class="helper">Verify before interacting.</div>
-    </section>
-
-    <section class="receipts section-flare">
-      <h4>Receipts.</h4>
-
-      <div class="cards">
-        <article class="card">
-          <div class="source">Reuters</div>
-          <h5>Dollar Holds Ground as Global Markets Reprice Risk</h5>
-          <p>Capital rotated toward U.S. assets as uncertainty elsewhere reinforced the dollar’s role as the primary reference point.</p>
+      <div class="cards" role="list">
+        <article class="card" role="listitem">
+          <div class="card-top">
+            <div class="source">Reuters</div>
+            <div class="meta">Context: Risk repricing · 2025</div>
+          </div>
+          <h3>Dollar Holds Ground as Global Markets Reprice Risk</h3>
+          <p>Capital rotates toward U.S. assets as uncertainty elsewhere reinforces the dollar’s role as the primary reference point.</p>
         </article>
 
-        <article class="card">
-          <div class="source">Bloomberg</div>
-          <h5>Global Investors Reaffirm Confidence in U.S. Assets</h5>
-          <p>Portfolio flows favored dollar-denominated instruments as markets adjusted to shifting geopolitical and macro conditions.</p>
+        <article class="card" role="listitem">
+          <div class="card-top">
+            <div class="source">Bloomberg</div>
+            <div class="meta">Context: Portfolio flows · 2025</div>
+          </div>
+          <h3>Global Investors Reaffirm Confidence in U.S. Assets</h3>
+          <p>Dollar-denominated instruments remain preferred as markets adjust to shifting geopolitical and macro conditions.</p>
         </article>
 
-        <article class="card">
-          <div class="source">Reuters</div>
-          <h5>U.S. Assets Attract Inflows as Volatility Tests Global Markets</h5>
-          <p>Periods of stress once again highlighted the United States as the system’s preferred destination for capital.</p>
+        <article class="card" role="listitem">
+          <div class="card-top">
+            <div class="source">Reuters</div>
+            <div class="meta">Context: Volatility regimes · 2025</div>
+          </div>
+          <h3>U.S. Assets Attract Inflows as Volatility Tests Global Markets</h3>
+          <p>Stress periods once again highlight the United States as the system’s preferred destination for capital.</p>
         </article>
       </div>
     </section>
 
-<footer class="footer-x">
-  <a href="https://x.com/TheUSDefault"
-     target="_blank"
-     rel="noopener noreferrer"
-     aria-label="X Profil">
-    <img src="x.png" alt="" class="x-icon" aria-hidden="true">
-  </a>
-</footer>
+    <!-- ACCESS (Contextual path + safety microcopy) -->
+    <section class="access section-flare" aria-labelledby="access-label">
+      <div class="section-head compact">
+        <div id="access-label" class="label">ACCESS</div>
+        <p class="section-note">
+          Read-only reference. Do not interact unless you independently verify the address and network.
+        </p>
+      </div>
 
+      <div class="usdwon">$USDefault</div>
+
+      <div class="access-grid" role="group" aria-label="Contract and network details">
+        <div class="kv">
+          <div class="k">Network</div>
+          <div class="v mono">Solana</div>
+        </div>
+        <div class="kv">
+          <div class="k">Status</div>
+          <div class="v">Early phase · capital positioning</div>
+        </div>
+      </div>
+
+      <button
+        class="wallet"
+        type="button"
+        title="Copy address"
+        data-copy="0x1234…5678"
+        aria-label="Copy address"
+      >
+        <span class="wallet-label">Contract</span>
+        <span class="wallet-value mono">0x1234…5678</span>
+      </button>
+
+      <div class="copied-hint" aria-hidden="true">Copied to clipboard</div>
+
+      <p class="helper">
+        Always verify addresses independently. Never trust screenshots, DMs, or look-alike domains.
+      </p>
+    </section>
+
+    <footer class="footer">
+      <a href="https://x.com/TheUSDefault" target="_blank" rel="noopener noreferrer" aria-label="X profile" class="footer-xlink">
+        <img src="x.png" alt="X" class="x-icon">
+      </a>
+
+      <div class="footer-text">
+        <div class="disclaimer">Market commentary only. Not financial advice.</div>
+        <div class="fineprint">© <span id="year"></span> USDefault. All rights reserved.</div>
+      </div>
+    </footer>
 
   </div>
 
@@ -72,72 +147,100 @@
   // Reveal-on-scroll (IntersectionObserver)
   (function(){
     const cards = document.querySelectorAll('.card');
-    if(cards.length){
-      const io = new IntersectionObserver(entries => {
-        entries.forEach(e => {
-          if(e.isIntersecting){
-            e.target.classList.add('visible');
-            io.unobserve(e.target);
-          }
-        });
-      }, { threshold:0.15 });
+    if(!cards.length) return;
 
-      cards.forEach(c => io.observe(c));
-    }
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    cards.forEach(c => io.observe(c));
   })();
 
-  // Wallet copy interaction (accessible) - robust, uses element-relative hint
+  // Unified Copy-to-Clipboard for any element with [data-copy]
   (function(){
-    const wallet = document.querySelector('.wallet');
-    if(!wallet) return;
+    const nodes = document.querySelectorAll('[data-copy]');
+    if(!nodes.length) return;
 
-    // Das Hint-Element steht direkt nach der Wallet im DOM
-    const access = document.querySelector('.access');
-    const hint = access.querySelector('.copied-hint');
+    const accessHint = document.querySelector('.copied-hint');
+    const heroHint = document.querySelector('.hero-copied');
 
-
-    function showFeedback(){
-      wallet.setAttribute('aria-label','Kopiert');
-      wallet.classList.add('copied');
-      if(hint) hint.classList.add('is-visible');
-
-      setTimeout(()=>{
-        wallet.classList.remove('copied');
-        if(hint) hint.classList.remove('is-visible');
-      },1600);
+    function flash(el){
+      el.classList.add('copied');
+      setTimeout(()=> el.classList.remove('copied'), 900);
     }
 
-    function copyWallet(){
-      const text = wallet.dataset.wallet || wallet.textContent.trim();
+    function showHint(context){
+      if(context === 'hero' && heroHint){
+        heroHint.classList.add('is-visible');
+        setTimeout(()=> heroHint.classList.remove('is-visible'), 1200);
+      } else if(accessHint){
+        accessHint.classList.add('is-visible');
+        setTimeout(()=> accessHint.classList.remove('is-visible'), 1200);
+      }
+    }
 
-      if(navigator.clipboard && window.isSecureContext){
-        navigator.clipboard.writeText(text).then(showFeedback).catch(showFeedback);
-      } else {
+    async function copyText(text){
+      try{
+        if(navigator.clipboard && window.isSecureContext){
+          await navigator.clipboard.writeText(text);
+          return true;
+        }
+      } catch(e){}
+      // fallback
+      try{
         const ta = document.createElement('textarea');
         ta.value = text;
         ta.style.position = 'fixed';
         ta.style.left = '-9999px';
         document.body.appendChild(ta);
         ta.select();
-        try { document.execCommand('copy'); } catch(e){}
+        document.execCommand('copy');
         ta.remove();
-        showFeedback();
+        return true;
+      } catch(e){
+        return false;
       }
     }
 
-    wallet.addEventListener('click', copyWallet);
-    wallet.addEventListener('keypress', (e)=>{
-      if(e.key === 'Enter' || e.key === ' ') copyWallet();
+    nodes.forEach(el => {
+      const handler = async () => {
+        const text = el.getAttribute('data-copy') || el.textContent.trim();
+        await copyText(text);
+        flash(el);
+
+        const isHero = el.classList.contains('copy-chip');
+        showHint(isHero ? 'hero' : 'access');
+
+        // keep aria-label sensible
+        const prev = el.getAttribute('aria-label') || '';
+        el.setAttribute('aria-label', 'Copied');
+        setTimeout(()=> el.setAttribute('aria-label', prev || 'Copy'), 1300);
+      };
+
+      el.addEventListener('click', handler);
+      el.addEventListener('keypress', (e)=>{
+        if(e.key === 'Enter' || e.key === ' ') handler();
+      });
     });
   })();
 
-  // Live appear animation - zeigt "Live." nach Page load
+  // Footer year
+  (function(){
+    const y = document.getElementById('year');
+    if(y) y.textContent = new Date().getFullYear();
+  })();
+
+  // Status appear
   window.addEventListener('load', () => {
-    const live = document.querySelector('.hero .live');
-    if(!live) return;
-    setTimeout(() => live.classList.add('is-visible'), 900);
+    const status = document.querySelector('.status');
+    if(!status) return;
+    setTimeout(() => status.classList.add('is-visible'), 650);
   });
   </script>
-
 </body>
 </html>
