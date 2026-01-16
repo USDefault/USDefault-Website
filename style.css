@@ -94,12 +94,14 @@ body{
   -webkit-text-stroke: 0.55px rgba(0,0,0,0.40);
 }
 
+/* Context line */
 .hero-sub{
-  margin:14px auto 0;
+  margin:16px auto 0;
   max-width:54ch;
-  font-size:16px;
+  font-size:14px;
   font-weight:400;
-  color:rgba(255,255,255,0.86);
+  letter-spacing:0.02em;
+  color:rgba(255,255,255,0.74);
   text-shadow: 0 6px 18px rgba(0,0,0,0.55);
 }
 
@@ -108,12 +110,13 @@ body{
   align-items:center;
   justify-content:center;
   gap:14px;
-  margin-top:16px;
+  margin-top:22px;
 }
 
 .hero-tagline{
-  font-size:14px;
-  color:rgba(255,255,255,0.80);
+  font-size:15px;
+  font-weight:500;
+  color:rgba(255,255,255,0.84);
   letter-spacing:0.01em;
 }
 
@@ -203,6 +206,7 @@ body{
   background: rgba(255,255,255,0.08);
 }
 
+/* IMPORTANT: default remains hidden; only .is-visible shows it */
 .hero-copied{
   margin:10px auto 0;
   font-size:12px;
@@ -544,8 +548,12 @@ body{
   }
 
   .hero-sub{
-    font-size:15px;
+    font-size:14px;
     max-width:58ch;
+  }
+
+  .hero-tagline{
+    font-size:14px;
   }
 
   .usdwon{ font-size:28px; }
@@ -560,92 +568,59 @@ body{
   }
 }
 
-/* Mobile (fix "empty" feel: dynamic hero height, full-bleed layout, reduced gaps) */
+/* Mobile: ausschließlich Header (Hero) feinjustieren */
 @media (max-width:520px){
-  :root{
-    /* dynamic instead of fixed: prevents oversized hero on short screens */
-    --hero-height: clamp(360px, 72svh, 520px);
-  }
-
-  /* Full-bleed mobile: avoid "narrow column" feeling */
-  .page{
-    max-width:100%;
-    padding:0;
-  }
-
-  /* Keep hero full-bleed */
-  .hero{
-    border-radius:0;
-    margin:0 0 16px;
-    height:var(--hero-height);
-  }
+  .hero{ margin-bottom:14px; }
 
   .hero-inner{
-    margin-top: clamp(60px, 14svh, 110px);
-    padding:22px 18px;
+    padding:28px 18px 18px;
   }
 
+  /* h1 bleibt exakt wie gefordert */
   .hero h1{
-    font-size: clamp(26px, 7.6vw, 40px);
-    letter-spacing:-0.012em;
+    font-size: clamp(28px, 10.6vw, 42px);
   }
 
   .hero-sub{
-    font-size:14px;
-    margin-top:12px;
+    font-size:12.5px;
+    margin-top:18px;
+    color:rgba(255,255,255,0.66);
+    line-height:1.35;
   }
 
   .hero-meta{
     flex-direction:column;
-    gap:10px;
-    margin-top:14px;
+    gap:8px;
+    margin-top:12px;
+  }
+
+  .hero-tagline{
+    font-size:12px;
+    letter-spacing:0.03em;
+    color:rgba(255,255,255,0.62);
+  }
+
+  .status{
+    font-size:11.5px;
+    padding:6px 10px;
+    opacity:0.95;
+  }
+
+  .status-dot{
+    transform:scale(0.85);
+    opacity:0.85;
   }
 
   .hero-quick{
-    margin-top:14px;
-    gap:8px;
     padding:9px 10px;
+    gap:8px;
   }
 
-  .hq-note{
-    display:none; /* reduce clutter on very small screens */
-  }
+  .hq-note{ display:none; }
 
-  /* Section padding to replace removed .page padding */
-  .receipts,
-  .access,
-  .footer{
-    padding-left:16px;
-    padding-right:16px;
-  }
-
-  /* Reduce vertical dead space between sections */
-  .receipts{ margin-top: 12px; }
-  .access{ margin-top: 34px; }
-  .footer{ margin-top: 46px; }
-
-  .cards{
-    gap:12px;
-    padding:0 2px;
-  }
-
-  .card{
-    width:100%;
-    max-width:100%;
-    padding:16px;
-  }
-
-  .usdwon{
-    font-size:26px;
-    margin-bottom:12px;
-  }
-
-  .wallet{
-    width:100%;
-    justify-content:center;
-  }
-
-  .wallet-value{
-    font-size:12.5px;
+  /* IMPORTANT: do NOT override opacity here; otherwise it's always visible */
+  .hero-copied{
+    margin-top:6px;
+    font-size:11.5px;
   }
 }
