@@ -35,15 +35,18 @@
         <!-- QUICK PATH (Above-the-fold contract copy) -->
         <div class="hero-quick" aria-label="Quick access">
           <span class="hq-k">Contract</span>
+
+          <!-- Display stays short with ellipsis; data-copy is full -->
           <button
             class="copy-chip mono"
             type="button"
-            data-copy="0x1234…5678"
+            data-copy="55H7TemadmEVKJDAeckX2KnDrMXwEdCNMTTTwMVTUSA"
             aria-label="Copy contract address"
             title="Copy"
           >
-            0x1234…5678
+            55H7Te…TUSA
           </button>
+
           <span class="hq-note">Verify independently</span>
         </div>
 
@@ -90,12 +93,12 @@
       </div>
     </section>
 
-    <!-- ACCESS (Contextual path + safety microcopy) -->
+    <!-- ACCESS -->
     <section class="access section-flare" aria-labelledby="access-label">
       <div class="section-head compact">
         <div id="access-label" class="label">ACCESS</div>
         <p class="section-note">
-          Do not interact unless you independently verify the address and network.
+          For reference. Confirm address and network before proceeding.
         </p>
       </div>
 
@@ -116,17 +119,17 @@
         class="wallet"
         type="button"
         title="Copy address"
-        data-copy="0x1234…5678"
+        data-copy="55H7TemadmEVKJDAeckX2KnDrMXwEdCNMTTTwMVTUSA"
         aria-label="Copy address"
       >
         <span class="wallet-label">Contract</span>
-        <span class="wallet-value mono">0x1234…5678</span>
+        <span class="wallet-value mono">55H7Te…TUSA</span>
       </button>
 
       <div class="copied-hint" aria-hidden="true">Copied to clipboard</div>
 
       <p class="helper">
-        Always verify addresses independently. Never trust screenshots, DMs, or look-alike domains.
+        Never trust screenshots, DMs, or look-alike domains.
       </p>
     </section>
 
@@ -159,6 +162,28 @@
     }, { threshold: 0.15 });
 
     cards.forEach(c => io.observe(c));
+  })();
+
+  // Short display formatter: keep full address in data-copy, show truncated in UI
+  (function(){
+    const FULL = "55H7TemadmEVKJDAeckX2KnDrMXwEdCNMTTTwMVTUSA";
+    const SHORT = (addr) => {
+      if(!addr || addr.length < 12) return addr || "";
+      return addr.slice(0, 6) + "…" + addr.slice(-4);
+    };
+
+    // Ensure any element with this exact address displays short format
+    document.querySelectorAll('[data-copy]').forEach(el => {
+      const v = el.getAttribute('data-copy') || "";
+      if(v === FULL){
+        // For buttons or spans, keep displayed short
+        if(el.classList.contains('copy-chip')) el.textContent = SHORT(v);
+        if(el.classList.contains('wallet')) {
+          const span = el.querySelector('.wallet-value');
+          if(span) span.textContent = SHORT(v);
+        }
+      }
+    });
   })();
 
   // Unified Copy-to-Clipboard for any element with [data-copy]
