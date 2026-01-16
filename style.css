@@ -603,7 +603,8 @@ body{
   .status{
     font-size:11.5px;
     padding:6px 10px;
-    opacity:0.95;
+    /* keep the same fade-in behavior as desktop */
+    opacity:0;
   }
 
   .status-dot{
@@ -624,3 +625,4 @@ body{
     font-size:11.5px;
   }
 }
+
